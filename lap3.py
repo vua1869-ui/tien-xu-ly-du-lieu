@@ -18,6 +18,12 @@ files = {
 
 def process_lab_3(file_path, title, is_finance=False, is_health=False):
     print(f"\n{'=' * 20} {title} {'=' * 20}")
+    
+    # Thêm logic tự động tìm kiếm trong thư mục Lab3_Data
+    if not os.path.exists(file_path):
+        folder, filename = os.path.split(file_path)
+        file_path = os.path.join(folder, "Lab3_Data", filename)
+        
     if not os.path.exists(file_path):
         print(f"[LỖI] Không tìm thấy file tại: {file_path}")
         return

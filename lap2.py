@@ -12,9 +12,14 @@ plt.rcParams["figure.figsize"] = (12, 8)
 def load_data(filename):
     base_path = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(base_path, filename)
+    
+    # Thêm điều kiện tìm kiếm trong thư mục Lab2_Data
+    if not os.path.exists(file_path):
+        file_path = os.path.join(base_path, "Lab2_Data", filename)
+        
     if not os.path.exists(file_path):
         print(f"\n[LỖI] Không tìm thấy file: '{filename}'")
-        print(f"Vui lòng copy file vào thư mục: {base_path}")
+        print(f"Vui lòng copy file vào thư mục: {base_path} hoặc Lab2_Data")
         return None
     return pd.read_csv(file_path)
 
